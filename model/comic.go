@@ -1,9 +1,8 @@
-package comic
+package model
 
 import (
+	"encoding/json"
 	"fmt"
-	"encode/json"
-	"string"
 )
 
 type ComicResponse struct {
@@ -26,11 +25,11 @@ func (cr ComicResponse) FormattedDate() string {
 
 func (cr ComicResponse) Comic() Comic {
 	return Comic{
-		Title: cr.Title,
-		Number: cr.Num,
-		Date: cr.FormattedDate(),
+		Title:       cr.Title,
+		Number:      cr.Num,
+		Date:        cr.FormattedDate(),
 		Description: cr.Alt,
-		Image: cr.Img
+		Image:       cr.Img,
 	}
 }
 
@@ -46,7 +45,6 @@ func (c Comic) PrettyString() string {
 	return fmt.Sprintf(
 		"Title: %s\nComic No: %d\nDate: %s\nDescription: %s\nImage: %s\n",
 		c.Title, c.Number, c.Date, c.Description, c.Image)
-	)
 }
 
 func (c Comic) JSON() string {
